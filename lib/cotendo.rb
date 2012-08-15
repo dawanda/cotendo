@@ -14,7 +14,7 @@ class Cotendo
     expressions = [*expressions]
     request(:do_flush,
       'api:cname' => cname,
-      'api:flushExpression' => expressions.join("\n"),
+      'api:flushExpression' => "<![CDATA[" + expressions.join("\n") + "]]>",
       'api:flushType' => options[:flush_type] || 'hard'
     )
   end
